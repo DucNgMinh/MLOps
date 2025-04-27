@@ -163,28 +163,28 @@ curl -X POST "http://localhost:8000/predict" \
 ## 2. Observable systems
 When we have a service, we need some observable systems to monitoring our service. In this repo, we suggest Elastic Search, Grafana, Prometheus and Jaeger.
 
-### 2.1. Elastic Search
+### 2.1. Elasticsearch, Kibana & Logstash with FileBeat
 #### How to guide
 + ```cd observable_systems_docker/elk```
 + ```docker compose -f elk-docker-compose.yml -f extensions/filebeat/filebeat-compose.yml up -d```
 + You can access kibana at port 5601 to search logs, which FileBeat pulls logs from containers and pushes to ElasticSearch. Username and password of Kibana can be found at ```monitoring_docker/elk/.env```
 ![](images/elastic_search.png)
 
-### 3.2. Prometheus + Grafana + Jaeger for monitoring resources and apps
+### 2.2. Prometheus + Grafana + Jaeger for monitoring resources and apps
 #### How to guide
 + ```cd observable_systems_docker```
 + ```docker compose -f prom-graf-docker-compose.yaml up -d```
 + Access to Prometheus, Grafana, Jaeger and enjoy!!!
 + Then, you can access Prometheus at port 9090, Grafana at 3001 and Jaeger at 16686. Username and password of Grafana is admin.
 
-#### 3.2.1. Prometheus
+#### 2.2.1. Prometheus
 + In Prometheus UI, you can search any metrics what you want to monitor and click on the button that i highlighted border to list all metrics prometheus scraping
-#### 3.2.2. Grafana
+#### 2.2.2. Grafana
 When you access to Grafana, you can create your own dashboard to monitoring or use a template on Grafana Labs
-#### 3.3.3. Jaeger
+#### 2.3.3. Jaeger
 Last but not least, sometimes you need to trace some block code processing time, Jaeger will help you do that.
 
-### 4. Jenkins
+### 3. Jenkins
 #### How to guide
 
 + ```docker compose -f jenkins_docker/docker-compose.yml up -d```
